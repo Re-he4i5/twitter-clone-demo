@@ -1,4 +1,5 @@
 import Sidebar from "../components/Sidebar";
+import FollowBar from "../components/FollowBar";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
           <div className="col-span-3 lg:col-span-2 boeder-x-1 border-neutral-800 text-sky-500">
             Hello World
           </div>
+          <FollowBar />
         </div>
       </div>
     </div>
