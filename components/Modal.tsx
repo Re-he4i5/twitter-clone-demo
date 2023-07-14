@@ -9,7 +9,7 @@ interface ModalProps {
   onClose: () => void;
   onSubmit: () => void;
   title?: string;
-  body?: string;
+  body?: React.ReactElement;
   footer?: React.ReactElement;
   actionLabel: string;
   disabled?: boolean;
@@ -104,6 +104,7 @@ const Modal: React.FC<ModalProps> = ({
             >
               <h3 className="text-3xl font-semibold text-white">{title}</h3>
               <button
+                onClick={handleClose}
                 className="
                 p-1
                 ml-auto
