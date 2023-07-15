@@ -7,6 +7,7 @@ import useRegisterModal from "./useRegisterModal";
 
 import Input from "./input";
 import Modal from "./Modal";
+import { on } from "events";
 
 const RegisterModal = () => {
   const loginModal = useLoginModal();
@@ -17,6 +18,14 @@ const RegisterModal = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const onToggle = useCallback(() => {
+    if (isLoading) {
+      return;
+    }
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [isLoading, loginModal, registerModal]);
 
   const onSubmit = useCallback(async () => {
     try {
@@ -59,6 +68,20 @@ const RegisterModal = () => {
     </div>
   );
 
+  const footerContent = (
+    <div className="text-mutual-400 text-center mt-4">
+      <p>
+        Already have an account?{" "}
+        <span
+          className="text-white cursor-pointer hover:underline"
+          onClick={onToggle}
+        >
+          Sign in
+        </span>
+      </p>
+    </div>
+  );
+
   return (
     <Modal
       disabled={isLoading}
@@ -68,6 +91,7 @@ const RegisterModal = () => {
       onClose={registerModal.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
+      footer={footerContent}
     />
   );
 };
