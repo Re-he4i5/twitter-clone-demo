@@ -2,7 +2,7 @@ import { IconType } from "react-icons";
 
 interface SidebarItemProps {
   label: string;
-  icon: string;
+  icon: IconType;
   href?: string;
   onClick?: () => void;
 }
